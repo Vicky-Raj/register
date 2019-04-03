@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+<form action="" method="POST">
+    {% csrf_token %}
+    <select name="num">
+        {% for record in records %}
+        {% if result and result.current == record.current %}
+        <option value="{{ record.current }}" selected>{{ record.current }}</option>
+        {% else %}
+        <option value="{{ record.current }}">{{ record.current }}</option>
+        {% endif %}
+        {% endfor %}
+    </select>
+    <input type="submit">    
+</form>
+{% if result %}
+<div>
+    Number: {{ result.current }}<br>
+    Place: {{ result.place }}<br>
+    Zone: {{ result.zone }}<br>
+</div>
+{% endif %}
+</body>
+</html>
